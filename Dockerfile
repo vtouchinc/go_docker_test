@@ -13,4 +13,13 @@ ENV GIN_MODE=release
 RUN mkdir /gocache
 ENV GOCACHE /gocache
 
+# RUN groupadd -g 999 appuser
+# RUN useradd -r -u 999 -g appuser appuser
+
+# USER appuser
+
+# make user : docker
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+
+
 CMD go run *.go
