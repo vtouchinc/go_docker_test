@@ -10,6 +10,7 @@ EXPOSE 8083
 
 ENV GO111MODULE=on
 ENV GIN_MODE=release
-ENV GOCACHE=off
+RUN mkdir /gocache
+ENV GOCACHE /gocache
 
 CMD go run *.go
