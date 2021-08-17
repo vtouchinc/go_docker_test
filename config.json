@@ -1,9 +1,6 @@
 {
   "server": {
-    "http_port": ":8083",
-    "ice_servers": ["stun:stun.ekiga.net"],
-    "ice_username": "",
-    "ice_credential": ""
+    "http_port": ":8083"
   },
   "streams": {
     "H264_AAC": {
