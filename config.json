@@ -1,9 +1,9 @@
 {
   "server": {
     "http_port": ":8083",
-    "ice_servers": ["turn:13.250.13.83:3478?transport=udp"],
-    "ice_username": "YzYNCouZM1mhqhmseWk6",
-    "ice_credential": "YzYNCouZM1mhqhmseWk6"
+    "ice_servers": ["turn:numb.viagenie.ca"],
+    "ice_username": "webrtc@live.com",
+    "ice_credential": "muazkh"
   },
   "streams": {
     "H264_AAC": {
