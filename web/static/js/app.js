@@ -22,6 +22,7 @@ pc.ontrack = function(event) {
 
 pc.oniceconnectionstatechange = e => {
   console.log("*** " + pc.iceConnectionState)
+  console.log(config)
   log(pc.iceConnectionState)
 }
 
