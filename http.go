@@ -148,6 +148,8 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 				if err != nil {
 					log.Println("WritePacket", err)
 					return
+				} else {
+					log.Println("x")
 				}
 			}
 		}
