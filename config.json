@@ -2,8 +2,8 @@
   "server": {
     "http_port": ":8083",
     "ice_servers": ["turn:numb.viagenie.ca"],
-    "ice_username": "webrtc@live.com",
-    "ice_credential": "muazkh"
+    "ice_username": "aquie.kang@vtouch.io",
+    "ice_credential": "vtouch0419"
   },
   "streams": {
     "H264_AAC": {

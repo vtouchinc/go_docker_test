@@ -3,7 +3,9 @@ let suuid = $('#suuid').val();
 
 let config = {
   iceServers: [{
-    urls: ["stun:stun.l.google.com:19302"]
+    urls: ["turn:numb.viagenie.ca"],
+    username:"aquie.kang@vtouch.io",
+    credential: "vtouch0419",
   }]
 };
 
