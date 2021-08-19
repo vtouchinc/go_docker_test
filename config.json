@@ -1,6 +1,9 @@
 {
   "server": {
-    "http_port": ":8083"
+    "http_port": ":8083",
+    "ice_servers": ["turn:13.250.13.83:3478?transport=udp"],
+    "ice_username": "YzYNCouZM1mhqhmseWk6",
+    "ice_credential": "YzYNCouZM1mhqhmseWk6"
   },
   "streams": {
     "H264_AAC": {
@@ -21,8 +24,8 @@
       "url": "rtsp://admin:admin123@10.128.18.224/mpeg4"
     },
     "SaST": {
-	    "on_demand" : true,
-	    "url" : "rtsp://admin:tech0316_@192.168.0.110:8554/fhd"
+	    "on_demand" : false,
+	    "url" : "rtsp://admin:tech0316_@192.168.0.110:8554/uhd"
     }
   }
 }
