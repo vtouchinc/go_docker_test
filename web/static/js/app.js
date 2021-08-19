@@ -20,7 +20,10 @@ pc.ontrack = function(event) {
   log(event.streams.length + ' track is delivered')
 }
 
-pc.oniceconnectionstatechange = e => log(pc.iceConnectionState)
+pc.oniceconnectionstatechange = e => {
+  console.log("*** " + pc.iceConnectionState)
+  log(pc.iceConnectionState)
+}
 
 async function handleNegotiationNeededEvent() {
   let offer = await pc.createOffer();
