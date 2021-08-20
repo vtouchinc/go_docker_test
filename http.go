@@ -146,6 +146,8 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 					continue
 				}
 				err = muxerWebRTC.WritePacket(pck)
+				log.Printf("muxerWebRTC: %v\n", muxerWebRTC)
+
 				if err != nil {
 					log.Println("WritePacket", err)
 					return
