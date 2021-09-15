@@ -76,7 +76,7 @@ func RTSPWorker(name, url string, OnDemand, DisableAudio, Debug bool) error {
 				return ErrorStreamExitRtspDisconnect
 			}
 		case packetAV := <-RTSPClient.OutgoingPacketQueue:
-			log.Println("worker packet")
+			//log.Println("worker packet")
 			if AudioOnly || packetAV.IsKeyFrame {
 				keyTest.Reset(20 * time.Second)
 			}

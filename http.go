@@ -23,7 +23,7 @@ func serveHTTP() {
 
 	router := gin.Default()
 	router.Use(CORSMiddleware())
-	
+
 	if _, err := os.Stat("./web"); !os.IsNotExist(err) {
 		router.LoadHTMLGlob("web/templates/*")
 		router.GET("/", HTTPAPIServerIndex)
@@ -120,7 +120,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		log.Println("WriteHeader", err)
 		return
 	}
-	log.Println("*** HTTPAPIServerStreamWebRTC:", answer)
+	// log.Println("*** HTTPAPIServerStreamWebRTC:", answer)
 	_, err = c.Writer.Write([]byte(answer))
 	if err != nil {
 		log.Println("*** HTTPAPIServerStreamWebRTC Write", err)
@@ -146,7 +146,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 					continue
 				}
 				err = muxerWebRTC.WritePacket(pck)
-				log.Printf("muxerWebRTC: %v\n", muxerWebRTC)
+				// log.Printf("muxerWebRTC: %v\n", muxerWebRTC)
 
 				if err != nil {
 					log.Println("WritePacket", err)
@@ -182,7 +182,7 @@ type Response struct {
 }
 
 type ResponseError struct {
-	Error  string   `json:"error"`
+	Error string `json:"error"`
 }
 
 func HTTPAPIServerStreamWebRTC2(c *gin.Context) {
