@@ -1,6 +1,9 @@
 {
   "server": {
-    "http_port": ":8083"
+    "http_port": ":8083",
+    "ice_servers": ["turn:192.168.0.50"],
+    "ice_username": "vtouch",
+    "ice_credential": "vtouch0419"
   },
   "streams": 
   {
