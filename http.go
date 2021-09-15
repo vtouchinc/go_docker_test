@@ -120,9 +120,10 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		log.Println("WriteHeader", err)
 		return
 	}
+	log.Println("*** HTTPAPIServerStreamWebRTC:", answer)
 	_, err = c.Writer.Write([]byte(answer))
 	if err != nil {
-		log.Println("Write", err)
+		log.Println("*** HTTPAPIServerStreamWebRTC Write", err)
 		return
 	}
 	go func() {
@@ -145,11 +146,13 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 					continue
 				}
 				err = muxerWebRTC.WritePacket(pck)
+				log.Printf("muxerWebRTC: %v\n", muxerWebRTC)
+
 				if err != nil {
 					log.Println("WritePacket", err)
 					return
 				} else {
-					log.Println("x")
+					// log.Println("x")
 				}
 			}
 		}
