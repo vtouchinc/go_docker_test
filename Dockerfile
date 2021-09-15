@@ -1,7 +1,7 @@
 FROM golang:1.16
 
 RUN apt-get update && \
-      apt-get -y install curl nmap
+      apt-get -y install curl nmap net-tools
 
 
 WORKDIR /go/src/app
