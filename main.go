@@ -24,18 +24,20 @@ func main() {
 		done <- true
 	}()
 
+	
 	out, _ := exec.Command("ping", "wowzaec2demo.streamlock.net", "-c 5", "-i 3", "-w 10").Output()
 	if strings.Contains(string(out), "Destination Host Unreachable") {
 		fmt.Println("TANGO DOWN")
 	} else {
 		fmt.Println("IT'S ALIVEEE")
 	}
-	ping("wowzaec2demo.streamlock.net", "554")
-	ping("192.168.0.110", "8554")
+
+	
 
 	log.Println("Server Start Awaiting Signal")
 	<-done
 	log.Println("Exiting")
+	
 }
 
 func ping(host string, port string) {

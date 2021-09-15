@@ -2,11 +2,11 @@ let stream = new MediaStream();
 let suuid = $('#suuid').val();
 
 let config = {
-  iceServers: [{
-    urls: ["turn:numb.viagenie.ca"],
-    username:"aquie.kang@vtouch.io",
-    credential: "vtouch0419",
-  }]
+  // iceServers: [{
+  //   urls: ["turn:numb.viagenie.ca"],
+  //   username:"aquie.kang@vtouch.io",
+  //   credential: "vtouch0419",
+  // }]
 };
 
 const pc = new RTCPeerConnection(config);
@@ -19,17 +19,23 @@ let log = msg => {
 pc.ontrack = function(event) {
   stream.addTrack(event.track);
   videoElem.srcObject = stream;
-  log(event.streams.length + ' track is delivered')
+  log(event.streams.length + ' track is delivered') // 2nd  1 track
 }
 
 pc.oniceconnectionstatechange = e => {
   console.log("*** " + pc.iceConnectionState)
   console.log(config)
-  log(pc.iceConnectionState)
+  log(pc.iceConnectionState) 
+  // 1st // checking
+  // 3rd // connected
 }
 
 async function handleNegotiationNeededEvent() {
+  log("handle nego"); // 0th 
   let offer = await pc.createOffer();
+  console.log("offer : ");
+  console.log(offer);
+  log("make offer");
   await pc.setLocalDescription(offer);
   getRemoteSdp();
 }

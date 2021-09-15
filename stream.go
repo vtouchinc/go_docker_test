@@ -56,6 +56,7 @@ func RTSPWorker(name, url string, OnDemand, DisableAudio, Debug bool) error {
 	for {
 		select {
 		case <-clientTest.C:
+			log.Println("worker clientTest")
 			if OnDemand {
 				if !Config.HasViewer(name) {
 					return ErrorStreamExitNoViewer
@@ -64,8 +65,10 @@ func RTSPWorker(name, url string, OnDemand, DisableAudio, Debug bool) error {
 				}
 			}
 		case <-keyTest.C:
+			log.Println("worker keyTest")
 			return ErrorStreamExitNoVideoOnStream
 		case signals := <-RTSPClient.Signals:
+			log.Println("worker signal")
 			switch signals {
 			case rtspv2.SignalCodecUpdate:
 				Config.coAd(name, RTSPClient.CodecData)
@@ -73,6 +76,7 @@ func RTSPWorker(name, url string, OnDemand, DisableAudio, Debug bool) error {
 				return ErrorStreamExitRtspDisconnect
 			}
 		case packetAV := <-RTSPClient.OutgoingPacketQueue:
+			log.Println("worker packet")
 			if AudioOnly || packetAV.IsKeyFrame {
 				keyTest.Reset(20 * time.Second)
 			}
