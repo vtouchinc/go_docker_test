@@ -14,6 +14,12 @@ let config = {
   ],
 };
 
+console.log();
+console.log("===================================");
+console.log(JSON.stringify(config, null, 2));
+console.log("===================================");
+console.log();
+
 const pc = new RTCPeerConnection(config);
 pc.onnegotiationneeded = handleNegotiationNeededEvent;
 
@@ -130,8 +136,11 @@ function getCodecInfo() {
 let sendChannel = null;
 
 function getRemoteSdp() {
+  console.log();
   console.log("POST ======================================");
-  console.log(pc.localDescription.sdp);
+  parseSDP(pc.localDescription.sdp);
+  console.log();
+
   $.post(
     "../receiver/" + suuid,
     {

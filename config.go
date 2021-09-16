@@ -20,9 +20,9 @@ var Config = loadConfig()
 
 //ConfigST struct
 type ConfigST struct {
-	mutex   sync.RWMutex
-	Server  ServerST            `json:"server"`
-	Streams map[string]StreamST `json:"streams"`
+	mutex     sync.RWMutex
+	Server    ServerST            `json:"server"`
+	Streams   map[string]StreamST `json:"streams"`
 	LastError error
 }
 
@@ -122,6 +122,13 @@ func loadConfig() *ConfigST {
 		if err != nil {
 			log.Fatalln(err)
 		}
+
+		log.Println()
+		log.Println("==================")
+		log.Println(tmp.Server)
+		log.Println("==================")
+		log.Println()
+
 		for i, v := range tmp.Streams {
 			v.Cl = make(map[string]viewer)
 			tmp.Streams[i] = v
