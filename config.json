@@ -1,15 +1,12 @@
 {
   "server": {
     "http_port": ":8083",
-    "ice_servers": ["turn:192.168.0.50"],
-    "ice_username": "vtouch",
-    "ice_credential": "vtouch0419"
+    "ice_servers": ["stun:stun.l.google.com:19302"]
   },
-  "streams": 
-  {
-	"4F_10": {
-	    "on_demand" : false,
-	    "url" : "rtsp://admin:tech0316_@192.168.0.110:8554/uhd"
+  "streams": {
+    "4F_10": {
+      "on_demand": false,
+      "url": "rtsp://admin:tech0316_@192.168.0.110:8554/uhd"
     }
   }
 }

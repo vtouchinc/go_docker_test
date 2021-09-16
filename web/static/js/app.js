@@ -3,11 +3,14 @@ let suuid = $("#suuid").val();
 
 let config = {
   iceServers: [
+    // {
+    //   urls: ["turn:192.168.0.50"],
+    //   username: "vtouch",
+    //   credential: "vtouch0419",
+    // },
     {
-      urls: ["turn:192.168.0.50"],
-      username: "vtouch",
-      credential: "vtouch0419",
-    },
+      urls: ["stun:stun.l.google.com:19302"],
+    }
   ],
 };
 
