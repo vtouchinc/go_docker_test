@@ -1,8 +1,7 @@
 FROM golang:1.16
 
 RUN apt-get update && \
-      apt-get -y install curl nmap net-tools
-
+      apt-get -y install curl nmap net-tools iputils-ping
 
 WORKDIR /go/src/app
 COPY .  .
