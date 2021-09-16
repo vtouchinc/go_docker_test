@@ -6,9 +6,17 @@
     "ice_credential": "vtouch0419"
   },
   "streams": {
-    "4F_10": {
-      "on_demand": false,
+    "4F_UHD": {
+      "on_demand": true,
       "url": "rtsp://admin:tech0316_@192.168.0.110:8554/uhd"
+    },
+    "4F_FHD": {
+      "on_demand": true,
+      "url": "rtsp://admin:tech0316_@192.168.0.110:8554/fhd"
+    },
+    "5F_FHD": {
+      "on_demand": true,
+      "url": "rtsp://admin:tech0316_@192.168.0.111:8554/fhd"
     }
   }
 }
