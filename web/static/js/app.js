@@ -161,3 +161,71 @@ function getRemoteSdp() {
     }
   );
 }
+
+// Create a client instance
+//client = new Paho.MQTT.Client(location.hostname, Number(location.port), "clientId");
+client = new Paho.MQTT.Client("192.168.0.20", 30040, "web");
+
+// set callback handlers
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
+
+// connect the client
+client.connect({ onSuccess: onConnect });
+
+// called when the client connects
+function onConnect() {
+  console.log("MQTT CLIENT ~~~~~~~~~~~~~~~~~~");
+  // Once a connection has been made, make a subscription and send a message.
+  console.log("onConnect");
+  client.subscribe("cam_detect");
+  // message = new Paho.MQTT.Message("Hello");
+  // message.destinationName = "World";
+  // client.send(message);
+}
+
+// called when the client loses its connection
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    console.log("onConnectionLost:" + responseObject.errorMessage);
+  }
+}
+
+let canvas = undefined;
+
+// called when a message arrives
+function onMessageArrived(message) {
+  console.log("onMessageArrived:" + message.payloadString);
+
+  let divp = document.getElementById("remoteVideos");
+  divp.style.display = "inline-block";
+  let video = document.getElementById("videoElem");
+
+  if (canvas === undefined && video.videoWidth > 0) {
+    //Criando um canvas que vai guardar a imagem temporariamente
+    canvas = document.createElement("canvas");
+    canvas.style.position = "absolute";
+    divp.appendChild(canvas);
+    canvas.style.top = "0px";
+    canvas.offsetLeft = 0;
+    canvas.offsetTop = 0;
+    canvas.style.left = "0px";
+    canvas.width = divp.clientWidth;
+    canvas.height = divp.clientHeight;
+    console.log(" MADE CANVAS ~~~~~~~~~~~~");
+  }
+
+  if (canvas !== undefined) {
+    let ctx = canvas.getContext("2d");
+    let word = message.payloadString.split(",");
+    let scalex = (1.0 / video.videoWidth) * canvas.width;
+    let scaley = (1.0 / video.videoHeight) * canvas.height;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = `rgba(255,0,0,1.0)`;
+    ctx.lineWidth = 3;
+    ctx.strokeRect(word[0] * scalex, word[1] * scaley, (Number(word[2]) - Number(word[0])) * scalex, (Number(word[3]) - Number(word[1])) * scaley);
+  }
+}
+
+console.log("MQTT CLIENT load ~~~~~~~~~~~~~~~~~~");
